@@ -37,8 +37,8 @@ jobs:
       - name: Build, Test, Tag and push cats image to Amazon ECR
         env: 
           ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
-          ECR_REPOSITORY: clo835-assignment1
-          IMAGE_TAG: catsv0.1
+          ECR_REPOSITORY: assignment
+          IMAGE_TAG: cats-1
           
       # Runs a set of commands
         run: |
@@ -47,7 +47,7 @@ jobs:
           # Build the docker image 
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           # Run the container to test
-          docker run -d -p 8080:80 --name clo835-assignment1-cats $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run -d -p 8080:80 --name assignment-cats $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           # list all the containers
           docker ps
           echo " sleep 10 seconds for container to run"
@@ -58,8 +58,8 @@ jobs:
       - name: Build, Test, Tag and push dogs image to Amazon ECR
         env: 
           ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
-          ECR_REPOSITORY: clo835-assignment1
-          IMAGE_TAG: dogsv0.1
+          ECR_REPOSITORY: assignment
+          IMAGE_TAG: dogs-1
           
       # Runs a set of commands
         run: |
@@ -68,7 +68,7 @@ jobs:
           # Build the docker image 
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           # Run the container to test
-          docker run -d -p 8081:80 --name clo835-assignment1-dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run -d -p 8081:80 --name assignment-dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           # list all the containers
           docker ps
           echo " sleep 10 seconds for container to run"
