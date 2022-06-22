@@ -82,7 +82,11 @@ resource "aws_key_pair" "web_key" {
   public_key = file("linux_key.pub")
 }
 
-resource "aws_ecr_repository" "clo835-assignment1" {
-  name                 = "clo835-assignment1"
+resource "aws_ecr_repository" "cats-image" {
+  name                 = "cats-image"
+  image_tag_mutability = "MUTABLE"
+}
+resource "aws_ecr_repository" "dogs-image" {
+  name                 = "dogs-image"
   image_tag_mutability = "MUTABLE"
 }
