@@ -5,7 +5,11 @@ name: Deploy Dogs to ECR
 on:
   # Triggers the workflow on push request for the master branch on dogs repo
   push:
-    branches: [ master/dogs ]
+    branches:
+      - master
+    paths:
+      - dogs/*
+    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
