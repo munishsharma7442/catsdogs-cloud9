@@ -28,7 +28,7 @@ jobs:
 
     - name: Set $VERSION variable
       id: version
-      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+      run: echo ::set-output name=VERSION::$(echo $GITHUB_RUN_NUMBER)
 
     - name: Build, tag, and push the image to Amazon ECR for Cats app
       id: build-image-cats
