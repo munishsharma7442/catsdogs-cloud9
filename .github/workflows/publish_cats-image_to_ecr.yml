@@ -42,13 +42,13 @@ jobs:
       #  run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
       - uses: actions/checkout@v2
       - name: Create tag artifact
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
 
       - name: Build, Test, Tag and push cats image to Amazon ECR
         env: 
           ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
           ECR_REPOSITORY: cats-image
-          IMAGE_TAG: v${{ env.RELEASE_VERSION }}
+          IMAGE_TAG: v${{ env.GIT_TAG }}
           
       # Runs a set of commands
         run: |
