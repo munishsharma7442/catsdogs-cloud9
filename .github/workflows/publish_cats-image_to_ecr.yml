@@ -48,7 +48,7 @@ jobs:
         env: 
           ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
           ECR_REPOSITORY: cats-image
-          IMAGE_TAG: v${{ env.GIT_TAG }}
+          IMAGE_TAG: v${{ GIT_TAG }}
           
       # Runs a set of commands
         run: |
